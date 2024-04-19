@@ -7,6 +7,7 @@ let scrollTop;
 let isDown = false;
 
 row.addEventListener("mousedown", (e) => mouseDown(e));
+row.addEventListener("touchstart", (e) => mouseDown(e));
 card_section.addEventListener("mouseup", (e) => mouseUp(e));
 card_section.addEventListener("mouseleave", (e) => mouseLeave(e));
 
@@ -14,8 +15,12 @@ window.addEventListener("mousemove", function (e) {
   if (!isDown) return;
   let pixel = e.clientX + "px";
   car_1.style.width = pixel;
+});
 
-  console.log(isDown);
+window.addEventListener("touchmove", function (e) {
+  if (!isDown) return;
+  let pixel = e.touches[0].clientX + "px";
+  car_1.style.width = pixel;
 });
 
 function mouseDown(e) {
